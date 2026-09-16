@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciencias Naturales - Grado Séptimo | ABP</title>
+  <style>
+    :root{
+      --verde:#1b7f5a;
+      --verde-claro:#dff4e9;
+      --azul:#1769aa;
+      --azul-claro:#e5f2ff;
+      --amarillo:#ffd166;
+      --texto:#20302a;
+      --fondo:#f5fbf8;
+      --blanco:#ffffff;
+      --sombra:0 8px 24px rgba(20,70,50,.10);
+    }
+
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--texto);
+      background:var(--fondo);
+      line-height:1.6;
+    }
+
+    header{
+      background:linear-gradient(135deg,#0d6849,#15966a,#1769aa);
+      color:white;
+      padding:55px 20px 45px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header::after{
+      content:"🌿  💧  🐾  🌎";
+      position:absolute;
+      font-size:48px;
+      opacity:.13;
+      right:5%;
+      bottom:10px;
+      letter-spacing:12px;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.35);
+      padding:7px 15px;
+      border-radius:30px;
+      font-weight:bold;
+      margin-bottom:12px;
+    }
+
+    header h1{
+      margin:5px 0;
+      font-size:clamp(2rem,5vw,3.5rem);
+    }
+
+    header p{
+      max-width:850px;
+      margin:12px auto 0;
+      font-size:1.12rem;
+    }
+
+    nav{
+      background:white;
+      box-shadow:0 3px 12px rgba(0,0,0,.08);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:5px;
+      margin:0;
+      padding:10px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:var(--verde);
+      font-weight:bold;
+      padding:8px 12px;
+      border-radius:20px;
+      font-size:.92rem;
+    }
+
+    nav a:hover{background:var(--verde-claro)}
+
+    main{
+      width:min(1100px,92%);
+      margin:35px auto 60px;
+    }
+
+    section{
+      background:var(--blanco);
+      margin:25px 0;
+      padding:30px;
+      border-radius:18px;
+      box-shadow:var(--sombra);
+      border-left:6px solid var(--verde);
+    }
+
+    section h2{
+      margin-top:0;
+      color:var(--verde);
+      font-size:1.65rem;
+    }
+
+    .hero-card{
+      display:grid;
+      grid-template-columns:1.5fr 1fr;
+      gap:25px;
+      align-items:center;
+      background:linear-gradient(135deg,#ffffff,#eaf8f1);
+    }
+
+    .illustration{
+      min-height:220px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:7rem;
+      background:linear-gradient(135deg,#d9f4e6,#ddecff);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:#f8fcfa;
+      padding:20px;
+      border-radius:14px;
+      border:1px solid #dceee6;
+    }
+
+    .card h3{
+      margin-top:0;
+      color:var(--azul);
+    }
+
+    .number{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--verde);
+      color:white;
+      font-weight:bold;
+      margin-right:8px;
+    }
+
+    .activity{
+      background:linear-gradient(135deg,#fff8dd,#eef9ff);
+      border:2px dashed #d8b63c;
+      border-left:0;
+    }
+
+    .steps{
+      counter-reset:paso;
+      list-style:none;
+      padding:0;
+    }
+
+    .steps li{
+      counter-increment:paso;
+      margin:12px 0;
+      padding:12px 15px 12px 52px;
+      background:white;
+      border-radius:10px;
+      position:relative;
+    }
+
+    .steps li::before{
+      content:counter(paso);
+      position:absolute;
+      left:12px;
+      top:11px;
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:var(--azul);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+    }
+
+    .resources{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .tag{
+      background:var(--azul-claro);
+      color:#14557f;
+      padding:9px 13px;
+      border-radius:25px;
+      font-weight:bold;
+    }
+
+    .visual-box{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      text-align:center;
+    }
+
+    .visual{
+      padding:18px 10px;
+      background:#f1faf6;
+      border-radius:14px;
+      font-size:2.4rem;
+    }
+
+    .visual span{
+      display:block;
+      font-size:.9rem;
+      font-weight:bold;
+      margin-top:5px;
+    }
+
+    .question{
+      background:#eaf5ff;
+      border-radius:14px;
+      padding:18px;
+      border-left:5px solid var(--azul);
+      font-size:1.05rem;
+    }
+
+    button{
+      border:0;
+      background:var(--verde);
+      color:white;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    button:hover{filter:brightness(.92)}
+
+    #mensaje{
+      display:none;
+      margin-top:15px;
+      padding:15px;
+      border-radius:10px;
+      background:var(--verde-claro);
+      color:#145b42;
+      font-weight:bold;
+    }
+
+    footer{
+      background:#123d31;
+      color:white;
+      text-align:center;
+      padding:30px 20px;
+    }
+
+    footer strong{color:#a9e8c9}
+
+    @media(max-width:760px){
+      .hero-card,.grid{grid-template-columns:1fr}
+      .visual-box{grid-template-columns:repeat(2,1fr)}
+      section{padding:22px}
+      nav a{font-size:.8rem;padding:6px 8px}
+    }
+  </style>
+</head>
+
+<body>
+
+<header id="inicio">
+  <div class="badge">CIENCIAS NATURALES · GRADO SÉPTIMO</div>
+  <h1>Aprendemos Ciencias Investigando</h1>
+  <p>Una propuesta de <strong>Aprendizaje Basado en Proyectos (ABP)</strong> para comprender los ecosistemas y promover acciones de cuidado del ambiente.</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#metodologia">Metodología</a></li>
+    <li><a href="#contexto">Contexto</a></li>
+    <li><a href="#pertinencia">Pertinencia</a></li>
+    <li><a href="#actividad">Actividad</a></li>
+    <li><a href="#recursos">Recursos</a></li>
+    <li><a href="#visuales">Visuales</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section class="hero-card">
+    <div>
+      <h2>🌎 Una ciencia conectada con nuestro entorno</h2>
+      <p>
+        Esta página propone una metodología educativa flexible para estudiantes de
+        <strong>grado séptimo</strong>. El propósito es que los estudiantes no solo
+        memoricen conceptos científicos, sino que observen su entorno, formulen
+        preguntas, investiguen, trabajen en equipo y propongan soluciones.
+      </p>
+      <div class="question">
+        <strong>Pregunta orientadora:</strong><br>
+        ¿Cómo podemos cuidar los ecosistemas de nuestro entorno a partir de lo que
+        aprendemos en Ciencias Naturales?
+      </div>
+    </div>
+    <div class="illustration" aria-label="Ilustración de naturaleza">🌳🦋💧🌎</div>
+  </section>
+
+  <section id="metodologia">
+    <h2><span class="number">1</span>Nombre de la metodología educativa flexible</h2>
+    <h3>Aprendizaje Basado en Proyectos (ABP)</h3>
+    <p>
+      El ABP es una metodología en la que los estudiantes construyen conocimientos
+      mientras desarrollan un proyecto relacionado con una situación real. El docente
+      orienta el proceso y los estudiantes participan activamente en la investigación,
+      análisis, creación y comunicación de resultados.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="number">2</span>Breve explicación de la metodología</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🔎 Investigar</h3>
+        <p>Los estudiantes observan una situación, formulan preguntas y buscan información científica.</p>
+      </div>
+      <div class="card">
+        <h3>🤝 Trabajar en equipo</h3>
+        <p>Se organizan en grupos y distribuyen responsabilidades de acuerdo con sus fortalezas.</p>
+      </div>
+      <div class="card">
+        <h3>🧠 Pensar y analizar</h3>
+        <p>Relacionan conceptos de Ciencias Naturales con situaciones presentes en su comunidad.</p>
+      </div>
+      <div class="card">
+        <h3>💡 Crear soluciones</h3>
+        <p>Elaboran propuestas, productos o campañas y explican sus resultados a otras personas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contexto">
+    <h2><span class="number">3</span>Población o contexto donde podría implementarse</h2>
+    <p>
+      La propuesta está dirigida a <strong>estudiantes de grado séptimo</strong> del área
+      de Ciencias Naturales. Puede implementarse en instituciones educativas urbanas o
+      rurales, utilizando el entorno cercano como espacio de observación e investigación.
+    </p>
+    <p>
+      Puede adaptarse a diferentes condiciones de acceso tecnológico: con computadores,
+      celulares y conexión a Internet, o mediante materiales impresos y actividades de
+      observación directa cuando los recursos sean limitados.
+    </p>
+  </section>
+
+  <section id="pertinencia">
+    <h2><span class="number">4</span>¿Por qué es pertinente para Ciencias Naturales?</h2>
+    <ul>
+      <li>Relaciona los contenidos científicos con problemas reales del entorno.</li>
+      <li>Favorece la observación, la formulación de preguntas y la investigación.</li>
+      <li>Fortalece el trabajo colaborativo y la comunicación de resultados.</li>
+      <li>Permite desarrollar habilidades de análisis y pensamiento crítico.</li>
+      <li>Promueve actitudes de cuidado y responsabilidad frente al ambiente.</li>
+      <li>Se puede adaptar a distintos ritmos de aprendizaje y niveles de acceso a recursos.</li>
+    </ul>
+  </section>
+
+  <section id="actividad" class="activity">
+    <h2><span class="number">5</span>Actividad o estrategia de aula</h2>
+    <h3>💧 Proyecto: “Cuidemos el agua de nuestra institución”</h3>
+    <p>
+      Los estudiantes investigarán cómo se utiliza el agua en la institución educativa,
+      identificarán posibles situaciones de desperdicio y diseñarán propuestas para
+      promover un uso responsable.
+    </p>
+
+    <ol class="steps">
+      <li><strong>Explorar:</strong> observar los espacios donde se utiliza agua y registrar situaciones relevantes.</li>
+      <li><strong>Preguntar:</strong> formular preguntas como “¿Dónde se desperdicia más agua?” y “¿Cómo podemos reducir ese desperdicio?”.</li>
+      <li><strong>Investigar:</strong> consultar información sobre el ciclo del agua, consumo responsable y contaminación.</li>
+      <li><strong>Analizar:</strong> organizar los datos mediante tablas, gráficos o infografías.</li>
+      <li><strong>Proponer:</strong> crear una campaña escolar con mensajes y acciones concretas.</li>
+      <li><strong>Socializar:</strong> presentar el proyecto a compañeros, docentes o familias.</li>
+    </ol>
+
+    <button onclick="mostrarMensaje()">Ver producto final esperado</button>
+    <div id="mensaje">
+      📢 <strong>Producto final:</strong> una campaña de sensibilización sobre el cuidado
+      del agua, acompañada de una infografía o cartel digital y una exposición breve
+      realizada por los estudiantes.
+    </div>
+  </section>
+
+  <section id="recursos">
+    <h2><span class="number">6</span>Recursos TIC e Inteligencia Artificial</h2>
+    <p>Los siguientes recursos pueden apoyar las diferentes etapas del proyecto:</p>
+    <div class="resources">
+      <span class="tag">💻 Computador</span>
+      <span class="tag">📱 Celular o tableta</span>
+      <span class="tag">🎨 Canva</span>
+      <span class="tag">📝 Google Forms</span>
+      <span class="tag">📊 Hojas de cálculo</span>
+      <span class="tag">🎥 Videos educativos</span>
+      <span class="tag">🤖 ChatGPT</span>
+      <span class="tag">🔎 Buscadores académicos</span>
+    </div>
+    <p>
+      La IA puede utilizarse como apoyo para generar preguntas de investigación,
+      organizar ideas, explicar conceptos con diferentes niveles de dificultad y
+      revisar borradores. El estudiante debe contrastar la información y elaborar
+      sus propias conclusiones.
+    </p>
+  </section>
+
+  <section id="visuales">
+    <h2><span class="number">7</span>Elementos visuales para facilitar la comprensión</h2>
+    <div class="visual-box">
+      <div class="visual">🌳<span>Ecosistemas</span></div>
+      <div class="visual">💧<span>Agua</span></div>
+      <div class="visual">🦋<span>Biodiversidad</span></div>
+      <div class="visual">♻️<span>Reciclaje</span></div>
+    </div>
+    <p>
+      Se recomienda utilizar fotografías del entorno escolar, esquemas del ciclo del
+      agua, gráficos de datos, mapas conceptuales, infografías y videos cortos.
+      Los elementos visuales deben complementar la explicación escrita.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="number">8</span>Enlace funcional de acceso a la página web</h2>
+    <p>
+      Una vez publicada esta página en un servicio de alojamiento web, se podrá compartir
+      su dirección como enlace funcional en el formulario de entrega.
+    </p>
+    <p><strong>Ejemplo de dirección después de publicarla:</strong><br>
+      <em>https://tu-nombre-de-usuario.github.io/ciencias-naturales-septimo/</em>
+    </p>
+    <p>
+      También puede publicarse mediante otros servicios gratuitos de alojamiento web.
+    </p>
+  </section>
+
+  <section>
+    <h2>🎯 Aprendizajes esperados</h2>
+    <div class="grid">
+      <div class="card"><h3>Conocimiento científico</h3><p>Comprender relaciones entre los seres vivos, el ambiente y los recursos naturales.</p></div>
+      <div class="card"><h3>Indagación</h3><p>Observar, preguntar, recoger información y analizar evidencias.</p></div>
+      <div class="card"><h3>Comunicación</h3><p>Presentar resultados científicos de manera clara y creativa.</p></div>
+      <div class="card"><h3>Responsabilidad ambiental</h3><p>Proponer acciones que contribuyan al cuidado del entorno.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>Ciencias Naturales · Grado Séptimo</strong></p>
+  <p>Aprender ciencia también significa comprender y cuidar nuestro entorno. 🌎</p>
+</footer>
+
+<script>
+  function mostrarMensaje(){
+    const mensaje = document.getElementById("mensaje");
+    mensaje.style.display = mensaje.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>
